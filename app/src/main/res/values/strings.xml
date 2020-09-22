@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">projeto-mobile</string>
+    <string name="bem_vindo">Bem-Vindo</string>
+    <string name="nome">Nome</string>
+    <string name="senha">Senha</string>
+    <string name="login">Login</string>
+</resources>
