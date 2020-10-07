@@ -50,7 +50,8 @@ class CategoryActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
                 Toast.makeText(this, "Clicou Disciplinas", Toast.LENGTH_SHORT).show()
             }
             R.id.sair -> {
-                Toast.makeText(this, "Clicou Disciplinas", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Clicou Disciplinas", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
 
