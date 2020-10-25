@@ -6,51 +6,50 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
-import kotlinx.android.synthetic.main.activity_category2.*
+import kotlinx.android.synthetic.main.activity_pergunta.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 @Suppress("DEPRECATION")
-class CategoryActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class PerguntaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
-    private var categories = listOf<Category>()
+    private var perguntas = listOf<Pergunta>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category2)
+        setContentView(R.layout.activity_pergunta)
 
         setSupportActionBar(toolbar_view)
 
-        supportActionBar?.title = "Categorias"
+        supportActionBar?.title = "Perguntas"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         configuraMenuLateral()
 
-        recyclerCategory?.layoutManager = LinearLayoutManager(context)
-        recyclerCategory?.itemAnimator = DefaultItemAnimator()
-        recyclerCategory?.setHasFixedSize(true)
+        recycler_pergunta?.layoutManager = LinearLayoutManager(context)
+        recycler_pergunta?.itemAnimator = DefaultItemAnimator()
+        recycler_pergunta?.setHasFixedSize(true)
     }
 
     override fun onResume() {
         super.onResume()
-        taskCategories()
+        taskPerguntas()
     }
 
-    fun taskCategories(){
-        categories = CategoryService.getCategory(context)
-        recyclerCategory?.adapter = CategoryAdapter(categories) {onClickCategory(it)}
+    fun taskPerguntas(){
+        perguntas = PerguntaService.getPerguntas(context)
+        recycler_pergunta?.adapter = PerguntaAdapter(perguntas) {onClickPergunta(it)}
     }
 
-    fun onClickCategory(category: Category) {
-        Toast.makeText(context, "${category.name}", Toast.LENGTH_SHORT).show()
+    fun onClickPergunta(pergunta: Pergunta) {
+        val intent = Intent(context, TesteActivity::class.java)
+        startActivity(intent)
     }
 
     private fun configuraMenuLateral () {
@@ -68,7 +67,7 @@ class CategoryActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.categorias -> {
-                Toast.makeText(this, "Categorias", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Perguntas", Toast.LENGTH_SHORT).show()
             }
             R.id.perfil -> {
                 Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show()

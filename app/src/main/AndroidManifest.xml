@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailCategory"></activity>
+        <activity android:name=".TesteActivity"></activity>
+        <activity android:name=".DetailCategory" />
         <activity
-            android:name=".CategoryActivity"
-            android:theme="@style/AppTheme.Toolbar"></activity>
+            android:name=".PerguntaActivity"
+            android:theme="@style/AppTheme.Toolbar" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme">

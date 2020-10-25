@@ -19,10 +19,9 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerCategory"
+                android:id="@+id/recycler_pergunta"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:cacheColorHint="@android:color/transparent"
                 android:clipToPadding="false"
                 android:divider="@null"
                 android:dividerHeight="0dp"
