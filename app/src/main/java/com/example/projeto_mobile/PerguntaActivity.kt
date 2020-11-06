@@ -43,8 +43,12 @@ class PerguntaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     }
 
     fun taskPerguntas(){
-        perguntas = PerguntaService.getPerguntas(context)
-        recycler_pergunta?.adapter = PerguntaAdapter(perguntas) {onClickPergunta(it)}
+        Thread{
+            perguntas = PerguntaService.getPerguntas(context)
+            runOnUiThread {
+                recycler_pergunta?.adapter = PerguntaAdapter(perguntas) {onClickPergunta(it)}
+            }
+        }.start()
     }
 
     fun onClickPergunta(pergunta: Pergunta) {
@@ -98,7 +102,8 @@ class PerguntaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         } else if (id == android.R.id.home) {
             finish()
         } else if (id == R.id.action_adicionar) {
-            Toast.makeText(this, "Adicionar", Toast.LENGTH_LONG).show()
+            val it = Intent(context, NovaPerguntaActivity::class.java)
+            startActivity(it)
         }
 
         return super.onOptionsItemSelected(item)

@@ -38,7 +38,7 @@ class PerguntaAdapter (
 
         val pergunta = perguntas[position]
 
-        holder.cardNome.text = pergunta.tipo
+        holder.cardNome.text = "Tipo: ${pergunta.categoria}"
 
         holder.itemView.setOnClickListener{onClick(pergunta)}
     }
