@@ -15,24 +15,44 @@ class MainActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility = SYSTEM_UI_FLAG_FULLSCREEN
 
-        buttonAccess.setOnClickListener {
-            buttonAccess.setBackgroundResource(R.color.colorButtonDark)
-            var baseName = "aluno"
-            var basePassWord = "impacta"
+        buttonAccess.setOnClickListener {onClickLogin() }
 
-            var fieldName = nameUser.text.toString()
-            var fieldPassWord = passWordUser.text.toString()
+        var lembrar = Prefs.getBoolean("lembrar")
+        if (lembrar) {
+            var lembrarNome  = Prefs.getString("lembrarNome")
+            var lembrarSenha  = Prefs.getString("lembrarSenha")
+            nameUser.setText(lembrarNome)
+            passWordUser.setText(lembrarSenha)
+            check_lembrar.isChecked = lembrar
 
-            if (fieldName == baseName && fieldPassWord == basePassWord) {
-                Toast.makeText(this, "Login efetuado com sucesso", Toast.LENGTH_LONG).show()
+        }
+    }
+    fun onClickLogin() {
+        buttonAccess.setBackgroundResource(R.color.colorButtonDark)
+        var baseName = "aluno"
+        var basePassWord = "impacta"
 
-                val intent = Intent(this, PerguntaActivity::class.java)
+        var fieldName = nameUser.text.toString()
+        var fieldPassWord = passWordUser.text.toString()
+        var lembrarLogin = check_lembrar.isChecked
 
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Usuário ou senha incorretos", Toast.LENGTH_LONG).show()
-            }
+        Prefs.setBoolean("lembrar", lembrarLogin)
+        if (lembrarLogin){
+            Prefs.setString("lembrarNome", fieldName)
+            Prefs.setString("lembrarSenha", fieldPassWord)
+        } else {
+            Prefs.setString("lembrarNome", "")
+            Prefs.setString("lembrarSenha", "")
+        }
 
+        if (fieldName == baseName && fieldPassWord == basePassWord) {
+            Toast.makeText(this, "Login efetuado com sucesso", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, PerguntaActivity::class.java)
+
+            startActivity(intent)
+        } else {
+            Toast.makeText(this, "Usuário ou senha incorretos", Toast.LENGTH_LONG).show()
         }
     }
 }

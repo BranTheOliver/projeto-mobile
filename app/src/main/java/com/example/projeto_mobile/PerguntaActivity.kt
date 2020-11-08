@@ -47,12 +47,19 @@ class PerguntaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
             perguntas = PerguntaService.getPerguntas(context)
             runOnUiThread {
                 recycler_pergunta?.adapter = PerguntaAdapter(perguntas) {onClickPergunta(it)}
+                enviarNotificacao()
             }
         }.start()
     }
 
+    fun enviarNotificacao(){
+        val intent = Intent(this, PerguntaActivity::class.java)
+        NotificationUtil.create(1, intent, "Nova Pergunta", "Você tem uma nova pergunta!!!")
+    }
+
     fun onClickPergunta(pergunta: Pergunta) {
         val intent = Intent(context, TesteActivity::class.java)
+        intent.putExtra("pergunta", pergunta)
         startActivity(intent)
     }
 
