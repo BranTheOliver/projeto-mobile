@@ -54,7 +54,7 @@ class PerguntaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     fun enviarNotificacao(){
         val intent = Intent(this, PerguntaActivity::class.java)
-        NotificationUtil.create(1, intent, "Nova Pergunta", "Você tem uma nova pergunta!!!")
+        NotificationUtil.create(1, intent, "Bem Vindo!", "Seja bem vindo ao aplicativo de perguntas e respostas!")
     }
 
     fun onClickPergunta(pergunta: Pergunta) {
@@ -85,6 +85,10 @@ class PerguntaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
             }
             R.id.ajuda -> {
                 Toast.makeText(this, "Ajuda", Toast.LENGTH_SHORT).show()
+            }
+            R.id.localizacao -> {
+                val intent = Intent(context, MapasActivity::class.java)
+                startActivity(intent)
             }
             R.id.sair -> {
 //                Toast.makeText(this, "Clicou Disciplinas", Toast.LENGTH_SHORT).show()
