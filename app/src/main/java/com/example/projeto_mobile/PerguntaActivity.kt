@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_pergunta.*
+import kotlinx.android.synthetic.main.adapter_pergunta.*
 import kotlinx.android.synthetic.main.toolbar.*
+import kotlin.concurrent.thread
 
 @Suppress("DEPRECATION")
 class PerguntaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +37,8 @@ class PerguntaActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         recycler_pergunta?.layoutManager = LinearLayoutManager(context)
         recycler_pergunta?.itemAnimator = DefaultItemAnimator()
         recycler_pergunta?.setHasFixedSize(true)
-    }
+        }
+
 
     override fun onResume() {
         super.onResume()

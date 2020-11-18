@@ -57,4 +57,15 @@ object PerguntaService {
         return dao.getById(pergunta.id) != null
     }
 
+
+    fun delete(pergunta: Pergunta){
+        if (AndroidUtils.isInternetDisponivel()) {
+            val url = "$host/pergunta/${pergunta.id}"
+            val json = HttpHelper.delete(url)
+            return parserJson(json)
+        }else{
+            val dao = DatabaseManager.getPerguntaDAO()
+            dao.delete(pergunta)
+        }
+    }
 }

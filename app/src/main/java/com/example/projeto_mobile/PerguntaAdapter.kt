@@ -3,6 +3,7 @@ package com.example.projeto_mobile
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -15,10 +16,12 @@ class PerguntaAdapter (
     class PerguntasViewHolder(view: View): RecyclerView.ViewHolder(view){
         val cardNome: TextView
         val cardView: CardView
+        val btn: Button
 
         init {
             cardNome = view.findViewById<TextView>(R.id.card_template)
             cardView = view.findViewById<CardView>(R.id.card_pergunta)
+            btn = view.findViewById<Button>(R.id.excluir)
         }
 
     }
@@ -39,6 +42,7 @@ class PerguntaAdapter (
         val pergunta = perguntas[position]
 
         holder.cardNome.text = "Tipo: ${pergunta.categoria}"
+        holder.btn.id = pergunta.id.toInt()
 
         holder.itemView.setOnClickListener{onClick(pergunta)}
     }

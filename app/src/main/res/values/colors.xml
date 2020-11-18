@@ -6,4 +6,7 @@
     <color name="colorSecondary">#183A37</color>
     <color name="colorBackground">#EDFDF1</color>
     <color name="color_subtitle">#7A8089</color>
+    <color name="colorBackground2">#38C3FD</color>
+    <color name="colorBackground3">#E84152</color>
+
 </resources>

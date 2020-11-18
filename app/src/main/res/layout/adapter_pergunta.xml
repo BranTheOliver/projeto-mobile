@@ -15,6 +15,13 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
         <TextView
             android:id="@+id/card_template"
             android:layout_height="wrap_content"
@@ -23,6 +30,17 @@
             android:textSize="20dp"
             android:textColor="@android:color/black"
             />
+            <Button
+                android:id="@+id/excluir"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/colorBackground3"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:text="Excluir"
+                ></Button>
+        </LinearLayout>
     </LinearLayout>>
 
 </androidx.cardview.widget.CardView>
